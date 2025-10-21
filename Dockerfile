@@ -2,7 +2,7 @@
 # 1. 빌드 단계 (Build Stage): JAR 파일 및 레이어 생성
 # FROM openjdk:17-jdk-slim-bullseye 또는 openjdk:17-jdk-slim 등을 사용할 수 있습니다.
 ################################################################################
-FROM openjdk:17-jdk-slim AS build
+FROM eclipse-temurin:17-jdk AS build
 
 # 작업 디렉토리 설정
 WORKDIR /app
@@ -24,7 +24,7 @@ RUN ./gradlew bootJar --no-daemon
 # 2. 실행 단계 (Run Stage): JRE만 포함하여 이미지 크기 최소화
 # FROM openjdk:17-jre-slim-bullseye 또는 openjdk:17-jre-slim 등을 사용할 수 있습니다.
 ################################################################################
-FROM openjdk:17-jdk-slim AS final
+FROM eclipse-temurin:17-jdk AS final
 
 # 📝 보안 설정: 권한 없는 사용자(non-root user)로 실행
 # 대부분의 공식 JRE 이미지에는 'nobody' 사용자가 포함되어 있습니다.

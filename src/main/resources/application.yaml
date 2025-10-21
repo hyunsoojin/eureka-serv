@@ -9,6 +9,9 @@ eureka:
     fetch-registry: false
 
 management:
+  defaults:
+    metrics:
+      enabled: false
   metrics:
     enable:
-      system: false
+      all: false
